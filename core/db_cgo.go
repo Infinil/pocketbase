@@ -21,6 +21,7 @@ func init() {
 	// is set in case it hasn't been already set by another connection.
 	sql.Register("pb_sqlite3",
 		&sqlite3.SQLiteDriver{
+			Extensions: []string{"sqlite-phhammdist.so"},
 			ConnectHook: func(conn *sqlite3.SQLiteConn) error {
 				_, err := conn.Exec(`
 					PRAGMA busy_timeout       = 10000;
